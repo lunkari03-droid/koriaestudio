@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-paper: 246 240 224;
+    --color-ink: 26 26 24;
+    --color-muted: 107 106 99;
+    --color-line: 26 26 24;
+    --color-surface: 242 239 232;
+    --color-accent: 200 100 62;
+    --color-star: 200 100 62;
+    --color-on-accent: 252 251 248;
+  }
+
+  .dark {
+    --color-paper: 20 20 15;
+    --color-ink: 252 251 248;
+    --color-muted: 156 155 146;
+    --color-line: 252 251 248;
+    --color-surface: 30 30 23;
+    --color-accent: 217 138 104;
+    --color-star: 228 196 94;
+    --color-on-accent: 20 20 15;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .studio-shell main section {
+    scroll-margin-top: 72px;
+  }
+
+  body {
+    background-color: rgb(var(--color-paper));
+    color: rgb(var(--color-ink));
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background: rgb(var(--color-accent));
+    color: rgb(var(--color-on-accent));
+  }
+}
+
+@layer components {
+  .studio-shell {
+    @apply min-h-screen bg-paper text-ink overflow-x-hidden;
+  }
+
+  .section-label {
+    @apply flex items-center justify-between text-[11px] font-mono uppercase tracking-label text-muted py-3 border-b border-line/20;
+  }
+
+  .section-inner {
+    @apply mx-auto w-full max-w-studio px-5 sm:px-8 lg:px-12;
+  }
+
+  .display-heading {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+  }
+
+  .sharp-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-none border border-line bg-transparent text-xs font-mono uppercase tracking-label transition-all duration-200 hover:bg-ink hover:text-paper h-11 px-5 py-2;
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-1 text-sm font-medium text-ink border-b border-line pb-0.5 transition-colors hover:text-accent hover:border-accent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .stripe-bg {
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 38px,
+      rgb(var(--color-line) / 0.05) 38px,
+      rgb(var(--color-line) / 0.05) 39px
+    );
+  }
+}
